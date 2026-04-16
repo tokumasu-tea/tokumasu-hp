@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tokumasu.github.io/tokumasu-hp/sitemap.xml
