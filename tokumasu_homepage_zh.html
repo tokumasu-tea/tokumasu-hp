@@ -176,8 +176,8 @@ footer{background:#070707;padding:72px 24px 32px}
   .nav-links,.nav-cta{display:none}
   .hamburger{display:flex}
   section,.featured,.ec-shops,.contact{padding:64px 20px}
-  #gallery > div{grid-template-columns:1fr!important;gap:24px!important;max-width:400px!important}
-  #featured .section-inner > div:last-child > div:last-child{grid-template-columns:1fr!important;gap:24px!important;padding:24px 16px!important;max-width:320px;margin:0 auto}
+  .variation-grid{grid-template-columns:1fr!important;gap:24px!important;padding:24px 16px!important;max-width:340px!important;margin:0 auto!important;justify-content:stretch!important}
+  .gallery-grid{grid-template-columns:1fr!important;gap:20px!important;max-width:90vw!important;margin:0 auto!important}
 }
 @media(max-width:480px){
   .hero-btns{flex-direction:column}
@@ -307,7 +307,7 @@ footer{background:#070707;padding:72px 24px 32px}
     <div style="margin-top:56px;padding-top:48px;border-top:1px solid rgba(200,169,110,0.15)">
       <span style="font-size:9px;letter-spacing:0.38em;color:var(--gold);display:block;margin-bottom:12px">Variation</span>
       <p style="font-family:'Noto Serif JP',serif;font-weight:300;font-size:clamp(16px,2vw,22px);color:#fff;margin-bottom:32px">承继传统，编织光辉 — 现代螺钿莳绘</p>
-      <div style="display:grid;grid-template-columns:repeat(3,minmax(0,288px));gap:144px;background:var(--black);padding:48px 40px;justify-content:center">
+      <div class="variation-grid" style="display:grid;grid-template-columns:repeat(3,minmax(0,288px));gap:144px;background:var(--black);padding:48px 40px;justify-content:center">
         <div style="background:#0a0a0a;padding:24px;border:1px solid rgba(200,169,110,0.1)"><div style="overflow:hidden;aspect-ratio:1/1"><img src="sasa04.jpg" style="width:100%;height:100%;object-fit:cover;transition:transform 0.3s ease" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'"></div></div>
         <div style="background:#0a0a0a;padding:24px;border:1px solid rgba(200,169,110,0.1)"><div style="overflow:hidden;aspect-ratio:1/1"><img src="kodaiji2026031601.jpg" style="width:100%;height:100%;object-fit:cover;transition:transform 0.3s ease" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'"></div></div>
         <div style="background:#0a0a0a;padding:24px;border:1px solid rgba(200,169,110,0.1)"><div style="overflow:hidden;aspect-ratio:1/1"><img src="akikusanatume3.jpg" style="width:100%;height:100%;object-fit:cover;transition:transform 0.3s ease" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'"></div></div>
@@ -362,7 +362,7 @@ footer{background:#070707;padding:72px 24px 32px}
 </section>
 
 <section style="background:#fff;padding:56px 24px" id="gallery">
-  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:56px;max-width:1300px;margin:0 auto">
+  <div class="gallery-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:56px;max-width:1300px;margin:0 auto">
     <div style="overflow:hidden;aspect-ratio:4/3">
       <img src="macha6set-10.jpg" alt="正宗宇治抹茶粉｜徳増茶道具专门店直供" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.6s" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
     </div>
