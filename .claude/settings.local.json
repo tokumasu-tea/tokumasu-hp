@@ -1,7 +1,10 @@
 {
   "permissions": {
     "allow": [
-      "Bash(LC_ALL=C find . \\\\\\( -name \"*.html\" -o -name \"*.xml\" \\\\\\) -exec sed -i '' 's|https://tokumasu\\\\.github\\\\.io/tokumasu-hp/|https://tokumasu-tea.github.io/tokumasu-hp/|g' {} +)"
+      "Bash(LC_ALL=C find . \\\\\\( -name \"*.html\" -o -name \"*.xml\" \\\\\\) -exec sed -i '' 's|https://tokumasu\\\\.github\\\\.io/tokumasu-hp/|https://tokumasu-tea.github.io/tokumasu-hp/|g' {} +)",
+      "Bash(python3 -c ' *)",
+      "Bash(python3)",
+      "Bash(open -a \"Google Chrome\" tokumasu_homepage.html)"
     ]
   }
 }
