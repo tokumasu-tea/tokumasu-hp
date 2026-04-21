@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
-
-Sitemap: https://tokumasu.github.io/tokumasu-hp/sitemap.xml
+Sitemap: https://tokumasu.co.jp/sitemap.xml
