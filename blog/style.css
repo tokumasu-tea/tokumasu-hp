@@ -267,3 +267,88 @@ a:hover {
   color: var(--color-accent);
   text-decoration: underline;
 }
+
+/* 3つのECショップブロック */
+.shop-trio {
+  margin: 3rem 0 2rem;
+  padding: 2rem 1rem;
+  background: #faf9f5;
+  border-top: 1px solid var(--color-accent);
+  border-bottom: 1px solid var(--color-accent);
+}
+
+.shop-trio .shop-trio-lead {
+  text-align: center;
+  font-size: 0.95rem;
+  margin: 0 0 1.5rem;
+  color: var(--color-text);
+}
+
+.shop-trio-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .shop-trio-grid {
+    flex-direction: row;
+    gap: 1rem;
+  }
+}
+
+.shop-trio-item {
+  flex: 1;
+  text-align: center;
+  padding: 1rem 0.5rem;
+  border-left: 1px solid var(--color-border);
+}
+
+.shop-trio-item:first-child {
+  border-left: none;
+}
+
+@media (max-width: 767px) {
+  .shop-trio-item {
+    border-left: none;
+    border-top: 1px solid var(--color-border);
+    padding-top: 1.25rem;
+  }
+  .shop-trio-item:first-child {
+    border-top: none;
+    padding-top: 0;
+  }
+}
+
+.shop-trio-item .shop-name-ja {
+  display: block;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 0.25rem;
+}
+
+.shop-trio-item .shop-name-en {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+}
+
+.shop-trio-item .shop-link {
+  display: inline-block;
+  font-size: 0.85rem;
+  color: var(--color-accent);
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  transition: color 0.2s ease;
+}
+
+.shop-trio-item .shop-link:hover {
+  color: var(--color-accent-light);
+}
+
+.shop-trio-item .shop-link::after {
+  content: " ›";
+}
