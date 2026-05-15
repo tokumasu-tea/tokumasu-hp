@@ -182,6 +182,7 @@ footer{background:#070707;padding:72px 24px 32px}
   section,.featured,.ec-shops,.contact{padding:64px 20px}
   .variation-grid{grid-template-columns:1fr!important;gap:24px!important;padding:24px 16px!important;max-width:340px!important;margin:0 auto!important;justify-content:stretch!important}
   .gallery-grid{grid-template-columns:1fr!important;gap:20px!important;max-width:90vw!important;margin:0 auto!important}
+  .new-grid{grid-template-columns:1fr!important;gap:32px!important}
 }
 @media(max-width:480px){
   .hero-btns{flex-direction:column}
@@ -421,17 +422,26 @@ footer{background:#070707;padding:72px 24px 32px}
 
 <!-- 新入荷セクション：ここから -->
 <section style="background:var(--cream);padding:56px 24px">
-  <div style="max-width:360px;margin:0 auto;text-align:center">
-    <!-- 新入荷：見出しを変更 -->
-    <span style="font-size:10px;letter-spacing:0.3em;color:var(--gold);display:block;margin-bottom:16px">신상품</span>
-    <!-- 新入荷：画像を変更（src・alt） -->
-    <a href="https://item.rakuten.co.jp/auc-tokumasu/cyafuruikanmini/" target="_blank" rel="noopener" style="display:block;overflow:hidden;width:300px;height:300px;margin:0 auto 20px">
-      <img src="kondo.jpg" alt="간편 말차 체（일본산）" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.6s" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
-    </a>
-    <!-- 新入荷：商品名を変更 -->
-    <p style="font-size:15px;color:var(--text);margin-bottom:12px;letter-spacing:0.04em">간편 말차 체（일본산）</p>
-    <!-- 新入荷：リンク先URLを変更 -->
-    <a href="https://item.rakuten.co.jp/auc-tokumasu/cyafuruikanmini/" target="_blank" rel="noopener" style="font-size:12px;color:var(--gold);text-decoration:none;letter-spacing:0.1em;transition:color 0.2s" onmouseover="this.style.color='var(--gold-light)'" onmouseout="this.style.color='var(--gold)'">자세히 보기 →</a>
+  <div style="max-width:760px;margin:0 auto;text-align:center">
+    <span style="font-size:10px;letter-spacing:0.3em;color:var(--gold);display:block;margin-bottom:32px">신상품</span>
+    <div class="new-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:40px;justify-items:center">
+      <!-- 新入荷カード1：간편 말차 체 -->
+      <div style="max-width:360px;text-align:center">
+        <a href="https://item.rakuten.co.jp/auc-tokumasu/cyafuruikanmini/" target="_blank" rel="noopener" style="display:block;overflow:hidden;width:300px;height:300px;margin:0 auto 20px">
+          <img src="kondo.jpg" alt="간편 말차 체（일본산）" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.6s" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
+        </a>
+        <p style="font-size:15px;color:var(--text);margin-bottom:12px;letter-spacing:0.04em">간편 말차 체（일본산）</p>
+        <a href="https://item.rakuten.co.jp/auc-tokumasu/cyafuruikanmini/" target="_blank" rel="noopener" style="font-size:12px;color:var(--gold);text-decoration:none;letter-spacing:0.1em;transition:color 0.2s" onmouseover="this.style.color='var(--gold-light)'" onmouseout="this.style.color='var(--gold)'">자세히 보기 →</a>
+      </div>
+      <!-- 新入荷カード2：흑라쿠 다완 명「이치고이치에」 -->
+      <div style="max-width:360px;text-align:center">
+        <a href="https://item.rakuten.co.jp/auc-tokumasu/cyawankuroraku1/" target="_blank" rel="noopener" style="display:block;overflow:hidden;width:300px;height:300px;margin:0 auto 20px">
+          <img src="images/new-products/current/一期一会（黒楽・松楽）.png" alt="흑라쿠 다완 명 「이치고이치에」" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.6s" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
+        </a>
+        <p style="font-size:15px;color:var(--text);margin-bottom:12px;letter-spacing:0.04em">흑라쿠 다완 명 「이치고이치에」</p>
+        <a href="https://item.rakuten.co.jp/auc-tokumasu/cyawankuroraku1/" target="_blank" rel="noopener" style="font-size:12px;color:var(--gold);text-decoration:none;letter-spacing:0.1em;transition:color 0.2s" onmouseover="this.style.color='var(--gold-light)'" onmouseout="this.style.color='var(--gold)'">자세히 보기 →</a>
+      </div>
+    </div>
   </div>
 </section>
 <!-- 新入荷セクション：ここまで -->
