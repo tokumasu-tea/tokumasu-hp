@@ -4,7 +4,7 @@
 
   <url>
     <loc>https://tokumasu.co.jp/tokumasu_homepage.html</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-05-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="ja" href="https://tokumasu.co.jp/tokumasu_homepage.html"/>
@@ -20,7 +20,7 @@
 
   <url>
     <loc>https://tokumasu.co.jp/tokumasu_homepage_en.html</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-05-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="ja" href="https://tokumasu.co.jp/tokumasu_homepage.html"/>
@@ -36,7 +36,7 @@
 
   <url>
     <loc>https://tokumasu.co.jp/tokumasu_homepage_zh.html</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-05-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="ja" href="https://tokumasu.co.jp/tokumasu_homepage.html"/>
@@ -52,7 +52,7 @@
 
   <url>
     <loc>https://tokumasu.co.jp/tokumasu_homepage_ko.html</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-05-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="ja" href="https://tokumasu.co.jp/tokumasu_homepage.html"/>
@@ -68,7 +68,7 @@
 
   <url>
     <loc>https://tokumasu.co.jp/tokumasu_homepage_fr.html</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-05-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="ja" href="https://tokumasu.co.jp/tokumasu_homepage.html"/>
@@ -84,7 +84,7 @@
 
   <url>
     <loc>https://tokumasu.co.jp/tokumasu_homepage_de.html</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-05-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="ja" href="https://tokumasu.co.jp/tokumasu_homepage.html"/>
@@ -100,7 +100,7 @@
 
   <url>
     <loc>https://tokumasu.co.jp/tokumasu_homepage_es.html</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-05-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="ja" href="https://tokumasu.co.jp/tokumasu_homepage.html"/>
@@ -116,7 +116,7 @@
 
   <url>
     <loc>https://tokumasu.co.jp/tokumasu_homepage_ar.html</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-05-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="ja" href="https://tokumasu.co.jp/tokumasu_homepage.html"/>
@@ -128,6 +128,390 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://tokumasu.co.jp/tokumasu_homepage_es.html"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tokumasu.co.jp/tokumasu_homepage_ar.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tokumasu.co.jp/tokumasu_homepage.html"/>
+  </url>
+
+  <url>
+    <loc>https://tokumasu.co.jp/tokumasu_tokushoho.html</loc>
+    <lastmod>2026-04-16</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tokumasu.co.jp/tokumasu_tokushoho.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tokumasu.co.jp/tokumasu_tokushoho_en.html"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://tokumasu.co.jp/tokumasu_tokushoho_zh.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tokumasu.co.jp/tokumasu_tokushoho_ko.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tokumasu.co.jp/tokumasu_tokushoho_fr.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tokumasu.co.jp/tokumasu_tokushoho_de.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tokumasu.co.jp/tokumasu_tokushoho_es.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tokumasu.co.jp/tokumasu_tokushoho_ar.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tokumasu.co.jp/tokumasu_tokushoho.html"/>
+  </url>
+
+  <url>
+    <loc>https://tokumasu.co.jp/tokumasu_tokushoho_en.html</loc>
+    <lastmod>2026-04-16</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tokumasu.co.jp/tokumasu_tokushoho.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tokumasu.co.jp/tokumasu_tokushoho_en.html"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://tokumasu.co.jp/tokumasu_tokushoho_zh.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tokumasu.co.jp/tokumasu_tokushoho_ko.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tokumasu.co.jp/tokumasu_tokushoho_fr.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tokumasu.co.jp/tokumasu_tokushoho_de.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tokumasu.co.jp/tokumasu_tokushoho_es.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tokumasu.co.jp/tokumasu_tokushoho_ar.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tokumasu.co.jp/tokumasu_tokushoho.html"/>
+  </url>
+
+  <url>
+    <loc>https://tokumasu.co.jp/tokumasu_tokushoho_zh.html</loc>
+    <lastmod>2026-04-16</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tokumasu.co.jp/tokumasu_tokushoho.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tokumasu.co.jp/tokumasu_tokushoho_en.html"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://tokumasu.co.jp/tokumasu_tokushoho_zh.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tokumasu.co.jp/tokumasu_tokushoho_ko.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tokumasu.co.jp/tokumasu_tokushoho_fr.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tokumasu.co.jp/tokumasu_tokushoho_de.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tokumasu.co.jp/tokumasu_tokushoho_es.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tokumasu.co.jp/tokumasu_tokushoho_ar.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tokumasu.co.jp/tokumasu_tokushoho.html"/>
+  </url>
+
+  <url>
+    <loc>https://tokumasu.co.jp/tokumasu_tokushoho_ko.html</loc>
+    <lastmod>2026-04-16</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tokumasu.co.jp/tokumasu_tokushoho.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tokumasu.co.jp/tokumasu_tokushoho_en.html"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://tokumasu.co.jp/tokumasu_tokushoho_zh.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tokumasu.co.jp/tokumasu_tokushoho_ko.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tokumasu.co.jp/tokumasu_tokushoho_fr.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tokumasu.co.jp/tokumasu_tokushoho_de.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tokumasu.co.jp/tokumasu_tokushoho_es.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tokumasu.co.jp/tokumasu_tokushoho_ar.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tokumasu.co.jp/tokumasu_tokushoho.html"/>
+  </url>
+
+  <url>
+    <loc>https://tokumasu.co.jp/tokumasu_tokushoho_fr.html</loc>
+    <lastmod>2026-04-16</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tokumasu.co.jp/tokumasu_tokushoho.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tokumasu.co.jp/tokumasu_tokushoho_en.html"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://tokumasu.co.jp/tokumasu_tokushoho_zh.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tokumasu.co.jp/tokumasu_tokushoho_ko.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tokumasu.co.jp/tokumasu_tokushoho_fr.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tokumasu.co.jp/tokumasu_tokushoho_de.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tokumasu.co.jp/tokumasu_tokushoho_es.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tokumasu.co.jp/tokumasu_tokushoho_ar.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tokumasu.co.jp/tokumasu_tokushoho.html"/>
+  </url>
+
+  <url>
+    <loc>https://tokumasu.co.jp/tokumasu_tokushoho_de.html</loc>
+    <lastmod>2026-04-16</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tokumasu.co.jp/tokumasu_tokushoho.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tokumasu.co.jp/tokumasu_tokushoho_en.html"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://tokumasu.co.jp/tokumasu_tokushoho_zh.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tokumasu.co.jp/tokumasu_tokushoho_ko.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tokumasu.co.jp/tokumasu_tokushoho_fr.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tokumasu.co.jp/tokumasu_tokushoho_de.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tokumasu.co.jp/tokumasu_tokushoho_es.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tokumasu.co.jp/tokumasu_tokushoho_ar.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tokumasu.co.jp/tokumasu_tokushoho.html"/>
+  </url>
+
+  <url>
+    <loc>https://tokumasu.co.jp/tokumasu_tokushoho_es.html</loc>
+    <lastmod>2026-04-16</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tokumasu.co.jp/tokumasu_tokushoho.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tokumasu.co.jp/tokumasu_tokushoho_en.html"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://tokumasu.co.jp/tokumasu_tokushoho_zh.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tokumasu.co.jp/tokumasu_tokushoho_ko.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tokumasu.co.jp/tokumasu_tokushoho_fr.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tokumasu.co.jp/tokumasu_tokushoho_de.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tokumasu.co.jp/tokumasu_tokushoho_es.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tokumasu.co.jp/tokumasu_tokushoho_ar.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tokumasu.co.jp/tokumasu_tokushoho.html"/>
+  </url>
+
+  <url>
+    <loc>https://tokumasu.co.jp/tokumasu_tokushoho_ar.html</loc>
+    <lastmod>2026-04-16</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tokumasu.co.jp/tokumasu_tokushoho.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tokumasu.co.jp/tokumasu_tokushoho_en.html"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://tokumasu.co.jp/tokumasu_tokushoho_zh.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tokumasu.co.jp/tokumasu_tokushoho_ko.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tokumasu.co.jp/tokumasu_tokushoho_fr.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tokumasu.co.jp/tokumasu_tokushoho_de.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tokumasu.co.jp/tokumasu_tokushoho_es.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tokumasu.co.jp/tokumasu_tokushoho_ar.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tokumasu.co.jp/tokumasu_tokushoho.html"/>
+  </url>
+
+  <url>
+    <loc>https://tokumasu.co.jp/tokumasu_privacypolicy.html</loc>
+    <lastmod>2026-04-16</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tokumasu.co.jp/tokumasu_privacypolicy.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tokumasu.co.jp/tokumasu_privacypolicy_en.html"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://tokumasu.co.jp/tokumasu_privacypolicy_zh.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tokumasu.co.jp/tokumasu_privacypolicy_ko.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tokumasu.co.jp/tokumasu_privacypolicy_fr.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tokumasu.co.jp/tokumasu_privacypolicy_de.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tokumasu.co.jp/tokumasu_privacypolicy_es.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tokumasu.co.jp/tokumasu_privacypolicy_ar.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tokumasu.co.jp/tokumasu_privacypolicy.html"/>
+  </url>
+
+  <url>
+    <loc>https://tokumasu.co.jp/tokumasu_privacypolicy_en.html</loc>
+    <lastmod>2026-04-16</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tokumasu.co.jp/tokumasu_privacypolicy.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tokumasu.co.jp/tokumasu_privacypolicy_en.html"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://tokumasu.co.jp/tokumasu_privacypolicy_zh.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tokumasu.co.jp/tokumasu_privacypolicy_ko.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tokumasu.co.jp/tokumasu_privacypolicy_fr.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tokumasu.co.jp/tokumasu_privacypolicy_de.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tokumasu.co.jp/tokumasu_privacypolicy_es.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tokumasu.co.jp/tokumasu_privacypolicy_ar.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tokumasu.co.jp/tokumasu_privacypolicy.html"/>
+  </url>
+
+  <url>
+    <loc>https://tokumasu.co.jp/tokumasu_privacypolicy_zh.html</loc>
+    <lastmod>2026-04-16</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tokumasu.co.jp/tokumasu_privacypolicy.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tokumasu.co.jp/tokumasu_privacypolicy_en.html"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://tokumasu.co.jp/tokumasu_privacypolicy_zh.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tokumasu.co.jp/tokumasu_privacypolicy_ko.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tokumasu.co.jp/tokumasu_privacypolicy_fr.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tokumasu.co.jp/tokumasu_privacypolicy_de.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tokumasu.co.jp/tokumasu_privacypolicy_es.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tokumasu.co.jp/tokumasu_privacypolicy_ar.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tokumasu.co.jp/tokumasu_privacypolicy.html"/>
+  </url>
+
+  <url>
+    <loc>https://tokumasu.co.jp/tokumasu_privacypolicy_ko.html</loc>
+    <lastmod>2026-04-16</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tokumasu.co.jp/tokumasu_privacypolicy.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tokumasu.co.jp/tokumasu_privacypolicy_en.html"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://tokumasu.co.jp/tokumasu_privacypolicy_zh.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tokumasu.co.jp/tokumasu_privacypolicy_ko.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tokumasu.co.jp/tokumasu_privacypolicy_fr.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tokumasu.co.jp/tokumasu_privacypolicy_de.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tokumasu.co.jp/tokumasu_privacypolicy_es.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tokumasu.co.jp/tokumasu_privacypolicy_ar.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tokumasu.co.jp/tokumasu_privacypolicy.html"/>
+  </url>
+
+  <url>
+    <loc>https://tokumasu.co.jp/tokumasu_privacypolicy_fr.html</loc>
+    <lastmod>2026-04-16</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tokumasu.co.jp/tokumasu_privacypolicy.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tokumasu.co.jp/tokumasu_privacypolicy_en.html"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://tokumasu.co.jp/tokumasu_privacypolicy_zh.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tokumasu.co.jp/tokumasu_privacypolicy_ko.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tokumasu.co.jp/tokumasu_privacypolicy_fr.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tokumasu.co.jp/tokumasu_privacypolicy_de.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tokumasu.co.jp/tokumasu_privacypolicy_es.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tokumasu.co.jp/tokumasu_privacypolicy_ar.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tokumasu.co.jp/tokumasu_privacypolicy.html"/>
+  </url>
+
+  <url>
+    <loc>https://tokumasu.co.jp/tokumasu_privacypolicy_de.html</loc>
+    <lastmod>2026-04-16</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tokumasu.co.jp/tokumasu_privacypolicy.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tokumasu.co.jp/tokumasu_privacypolicy_en.html"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://tokumasu.co.jp/tokumasu_privacypolicy_zh.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tokumasu.co.jp/tokumasu_privacypolicy_ko.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tokumasu.co.jp/tokumasu_privacypolicy_fr.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tokumasu.co.jp/tokumasu_privacypolicy_de.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tokumasu.co.jp/tokumasu_privacypolicy_es.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tokumasu.co.jp/tokumasu_privacypolicy_ar.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tokumasu.co.jp/tokumasu_privacypolicy.html"/>
+  </url>
+
+  <url>
+    <loc>https://tokumasu.co.jp/tokumasu_privacypolicy_es.html</loc>
+    <lastmod>2026-04-16</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tokumasu.co.jp/tokumasu_privacypolicy.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tokumasu.co.jp/tokumasu_privacypolicy_en.html"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://tokumasu.co.jp/tokumasu_privacypolicy_zh.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tokumasu.co.jp/tokumasu_privacypolicy_ko.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tokumasu.co.jp/tokumasu_privacypolicy_fr.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tokumasu.co.jp/tokumasu_privacypolicy_de.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tokumasu.co.jp/tokumasu_privacypolicy_es.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tokumasu.co.jp/tokumasu_privacypolicy_ar.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tokumasu.co.jp/tokumasu_privacypolicy.html"/>
+  </url>
+
+  <url>
+    <loc>https://tokumasu.co.jp/tokumasu_privacypolicy_ar.html</loc>
+    <lastmod>2026-04-16</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tokumasu.co.jp/tokumasu_privacypolicy.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tokumasu.co.jp/tokumasu_privacypolicy_en.html"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://tokumasu.co.jp/tokumasu_privacypolicy_zh.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tokumasu.co.jp/tokumasu_privacypolicy_ko.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tokumasu.co.jp/tokumasu_privacypolicy_fr.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tokumasu.co.jp/tokumasu_privacypolicy_de.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tokumasu.co.jp/tokumasu_privacypolicy_es.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tokumasu.co.jp/tokumasu_privacypolicy_ar.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tokumasu.co.jp/tokumasu_privacypolicy.html"/>
+  </url>
+
+  <url>
+    <loc>https://tokumasu.co.jp/tokumasu_international.html</loc>
+    <lastmod>2026-04-16</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tokumasu.co.jp/tokumasu_international.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tokumasu.co.jp/tokumasu_international_en.html"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://tokumasu.co.jp/tokumasu_international_zh.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tokumasu.co.jp/tokumasu_international_ko.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tokumasu.co.jp/tokumasu_international_fr.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tokumasu.co.jp/tokumasu_international_de.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tokumasu.co.jp/tokumasu_international_es.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tokumasu.co.jp/tokumasu_international_ar.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tokumasu.co.jp/tokumasu_international.html"/>
+  </url>
+
+  <url>
+    <loc>https://tokumasu.co.jp/tokumasu_international_en.html</loc>
+    <lastmod>2026-04-16</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tokumasu.co.jp/tokumasu_international.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tokumasu.co.jp/tokumasu_international_en.html"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://tokumasu.co.jp/tokumasu_international_zh.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tokumasu.co.jp/tokumasu_international_ko.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tokumasu.co.jp/tokumasu_international_fr.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tokumasu.co.jp/tokumasu_international_de.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tokumasu.co.jp/tokumasu_international_es.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tokumasu.co.jp/tokumasu_international_ar.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tokumasu.co.jp/tokumasu_international.html"/>
+  </url>
+
+  <url>
+    <loc>https://tokumasu.co.jp/tokumasu_international_zh.html</loc>
+    <lastmod>2026-04-16</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tokumasu.co.jp/tokumasu_international.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tokumasu.co.jp/tokumasu_international_en.html"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://tokumasu.co.jp/tokumasu_international_zh.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tokumasu.co.jp/tokumasu_international_ko.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tokumasu.co.jp/tokumasu_international_fr.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tokumasu.co.jp/tokumasu_international_de.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tokumasu.co.jp/tokumasu_international_es.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tokumasu.co.jp/tokumasu_international_ar.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tokumasu.co.jp/tokumasu_international.html"/>
+  </url>
+
+  <url>
+    <loc>https://tokumasu.co.jp/tokumasu_international_ko.html</loc>
+    <lastmod>2026-04-16</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tokumasu.co.jp/tokumasu_international.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tokumasu.co.jp/tokumasu_international_en.html"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://tokumasu.co.jp/tokumasu_international_zh.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tokumasu.co.jp/tokumasu_international_ko.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tokumasu.co.jp/tokumasu_international_fr.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tokumasu.co.jp/tokumasu_international_de.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tokumasu.co.jp/tokumasu_international_es.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tokumasu.co.jp/tokumasu_international_ar.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tokumasu.co.jp/tokumasu_international.html"/>
+  </url>
+
+  <url>
+    <loc>https://tokumasu.co.jp/tokumasu_international_fr.html</loc>
+    <lastmod>2026-04-16</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tokumasu.co.jp/tokumasu_international.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tokumasu.co.jp/tokumasu_international_en.html"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://tokumasu.co.jp/tokumasu_international_zh.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tokumasu.co.jp/tokumasu_international_ko.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tokumasu.co.jp/tokumasu_international_fr.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tokumasu.co.jp/tokumasu_international_de.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tokumasu.co.jp/tokumasu_international_es.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tokumasu.co.jp/tokumasu_international_ar.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tokumasu.co.jp/tokumasu_international.html"/>
+  </url>
+
+  <url>
+    <loc>https://tokumasu.co.jp/tokumasu_international_de.html</loc>
+    <lastmod>2026-04-16</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tokumasu.co.jp/tokumasu_international.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tokumasu.co.jp/tokumasu_international_en.html"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://tokumasu.co.jp/tokumasu_international_zh.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tokumasu.co.jp/tokumasu_international_ko.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tokumasu.co.jp/tokumasu_international_fr.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tokumasu.co.jp/tokumasu_international_de.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tokumasu.co.jp/tokumasu_international_es.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tokumasu.co.jp/tokumasu_international_ar.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tokumasu.co.jp/tokumasu_international.html"/>
+  </url>
+
+  <url>
+    <loc>https://tokumasu.co.jp/tokumasu_international_es.html</loc>
+    <lastmod>2026-04-16</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tokumasu.co.jp/tokumasu_international.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tokumasu.co.jp/tokumasu_international_en.html"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://tokumasu.co.jp/tokumasu_international_zh.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tokumasu.co.jp/tokumasu_international_ko.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tokumasu.co.jp/tokumasu_international_fr.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tokumasu.co.jp/tokumasu_international_de.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tokumasu.co.jp/tokumasu_international_es.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tokumasu.co.jp/tokumasu_international_ar.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tokumasu.co.jp/tokumasu_international.html"/>
+  </url>
+
+  <url>
+    <loc>https://tokumasu.co.jp/tokumasu_international_ar.html</loc>
+    <lastmod>2026-04-16</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tokumasu.co.jp/tokumasu_international.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tokumasu.co.jp/tokumasu_international_en.html"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://tokumasu.co.jp/tokumasu_international_zh.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tokumasu.co.jp/tokumasu_international_ko.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tokumasu.co.jp/tokumasu_international_fr.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tokumasu.co.jp/tokumasu_international_de.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tokumasu.co.jp/tokumasu_international_es.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tokumasu.co.jp/tokumasu_international_ar.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tokumasu.co.jp/tokumasu_international.html"/>
   </url>
 
   <url>
@@ -146,7 +530,7 @@
 
   <url>
     <loc>https://tokumasu.co.jp/blog/2026/05/11-furo-biraki.html</loc>
-    <lastmod>2026-05-13</lastmod>
+    <lastmod>2026-05-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="ja" href="https://tokumasu.co.jp/blog/2026/05/11-furo-biraki.html"/>
@@ -155,7 +539,7 @@
 
   <url>
     <loc>https://tokumasu.co.jp/blog/en/2026/05/11-furo-biraki.html</loc>
-    <lastmod>2026-05-13</lastmod>
+    <lastmod>2026-05-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="ja" href="https://tokumasu.co.jp/blog/2026/05/11-furo-biraki.html"/>
