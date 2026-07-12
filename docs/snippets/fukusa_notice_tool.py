@@ -42,9 +42,9 @@ ITEM_RE = re.compile(r"^\d+[．.]")
 STYLE_SECTION = "background:var(--cream);padding:0 24px 72px"
 STYLE_BOX = "max-width:640px;margin:0 auto;background:#fff;border:1px solid var(--border)"
 STYLE_BAND = (
-    "background:var(--black);color:var(--gold);font-family:'Noto Serif JP',serif;"
-    "font-weight:400;font-size:15px;letter-spacing:0.14em;text-align:center;"
-    "padding:14px 18px;margin:0"
+    "background:var(--black);color:#f5f5f5;font-family:'Noto Serif JP',serif;"
+    "font-weight:500;font-size:16px;letter-spacing:0.14em;text-align:center;"
+    "padding:14px 18px;margin:0;border-bottom:2px solid var(--gold)"
 )
 STYLE_INNER = "padding:2px 26px 30px;font-size:13px;line-height:2;color:var(--text)"
 STYLE_LEAD_P = "margin:24px 0 0"
