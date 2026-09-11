@@ -83,7 +83,11 @@
   async function lookupPostalCode() {
     if (form.elements.country.value !== 'Japan') return;
     const zipcode = form.elements.postal_code.value.replace(/\D/g,'');
-    if (zipcode.length !== 7 || zipcode === lastPostal) return;
+    if (zipcode.length !== 7) {
+      lastPostal = '';
+      return;
+    }
+    if (zipcode === lastPostal) return;
     lastPostal = zipcode;
     try {
       const response = await fetch(`https://zipcloud.ibsnet.co.jp/api/search?zipcode=${zipcode}`);
@@ -91,9 +95,10 @@
       const data = await response.json();
       const result = data.results && data.results[0];
       if (!result) return;
-      if (!form.elements.prefecture.value) form.elements.prefecture.value = lang === 'ja' ? result.address1 : (prefecturesEn[prefecturesJa.indexOf(result.address1)] || '');
-      if (!form.elements.address1.value) form.elements.address1.value = result.address2 || '';
-      if (!form.elements.address2.value) form.elements.address2.value = result.address3 || '';
+      if (form.elements.postal_code.value.replace(/\D/g,'') !== zipcode) return;
+      form.elements.prefecture.value = lang === 'ja' ? result.address1 : (prefecturesEn[prefecturesJa.indexOf(result.address1)] || '');
+      form.elements.address1.value = result.address2 || '';
+      form.elements.address2.value = result.address3 || '';
     } catch (_) { /* Manual entry remains available. */ }
   }
   function fillConfirmation() {
