@@ -6,17 +6,18 @@
 
   const lang = document.documentElement.lang === 'ja' ? 'ja' : 'en';
   const copy = {
-    ja: { required:'この項目は必須です', email:'正しいメールアドレスを入力してください', mismatch:'メールアドレスが一致しません', phone:'正しい電話番号を入力してください', furigana:'全角カタカナで入力してください', sending:'送信中…', submit:'送信する', failure:'送信できませんでした。しばらくしてからもう一度お試しいただくか、tokumasullc@gmail.com まで直接メールをお送りください。' },
-    en: { required:'This field is required.', email:'Please enter a valid email address.', mismatch:'Email addresses do not match.', phone:'Please enter a valid phone number.', furigana:'Please enter full-width katakana.', sending:'Sending…', submit:'Send', failure:'Your message could not be sent. Please try again in a moment, or email us directly at tokumasullc@gmail.com.' }
+    ja: { required:'この項目は必須です', email:'正しいメールアドレスを入力してください', mismatch:'メールアドレスが一致しません', phone:'正しい電話番号を入力してください', furigana:'全角カタカナで入力してください', address2Required:'ご住所2（町名・番地）を入力してください', address2Incomplete:'番地までご記入ください', sending:'送信中…', submit:'送信する', failure:'送信できませんでした。しばらくしてからもう一度お試しいただくか、tokumasullc@gmail.com まで直接メールをお送りください。' },
+    en: { required:'This field is required.', email:'Please enter a valid email address.', mismatch:'Email addresses do not match.', phone:'Please enter a valid phone number.', furigana:'Please enter full-width katakana.', address2Required:'This field is required.', address2Incomplete:'Please include your street or block number.', sending:'Sending…', submit:'Send', failure:'Your message could not be sent. Please try again in a moment, or email us directly at tokumasullc@gmail.com.' }
   }[lang];
   const prefecturesJa = ['北海道','青森県','岩手県','宮城県','秋田県','山形県','福島県','茨城県','栃木県','群馬県','埼玉県','千葉県','東京都','神奈川県','新潟県','富山県','石川県','福井県','山梨県','長野県','岐阜県','静岡県','愛知県','三重県','滋賀県','京都府','大阪府','兵庫県','奈良県','和歌山県','鳥取県','島根県','岡山県','広島県','山口県','徳島県','香川県','愛媛県','高知県','福岡県','佐賀県','長崎県','熊本県','大分県','宮崎県','鹿児島県','沖縄県'];
   const prefecturesEn = ['Hokkaido','Aomori','Iwate','Miyagi','Akita','Yamagata','Fukushima','Ibaraki','Tochigi','Gunma','Saitama','Chiba','Tokyo','Kanagawa','Niigata','Toyama','Ishikawa','Fukui','Yamanashi','Nagano','Gifu','Shizuoka','Aichi','Mie','Shiga','Kyoto','Osaka','Hyogo','Nara','Wakayama','Tottori','Shimane','Okayama','Hiroshima','Yamaguchi','Tokushima','Kagawa','Ehime','Kochi','Fukuoka','Saga','Nagasaki','Kumamoto','Oita','Miyazaki','Kagoshima','Okinawa'];
   const $ = (selector) => form.querySelector(selector);
-  const fields = ['name','furigana','inquiry','email','email_confirm','phone','country','postal_code','prefecture','address1','consent'].filter((name) => form.elements[name]);
+  const fields = ['name','furigana','inquiry','email','email_confirm','phone','country','postal_code','prefecture','address1','address2','consent'].filter((name) => form.elements[name]);
   const FURIGANA_RE = /^[ァ-ヶー　 ]*$/;
   const views = { input:$('#step-input'), confirm:$('#step-confirm'), done:$('#step-done') };
   const stepEls = [...document.querySelectorAll('.step')];
   let lastPostal = '';
+  let autoFilledAddress2 = '';
 
   if (lang === 'ja') {
     [...form.elements.prefecture.options].find((option) => option.text === 'Outside Japan')?.remove();
@@ -50,9 +51,10 @@
     fields.forEach((name) => {
       const input = form.elements[name];
       const empty = input.type === 'checkbox' ? !input.checked : !input.value.trim();
-      if (empty) { showError(name, copy.required); errors.push(input); }
+      if (empty) { showError(name, name === 'address2' ? copy.address2Required : copy.required); errors.push(input); }
     });
     if (form.elements.furigana && form.elements.furigana.value && !FURIGANA_RE.test(form.elements.furigana.value)) { showError('furigana',copy.furigana); errors.push(form.elements.furigana); }
+    if (form.elements.address2.value.trim() && autoFilledAddress2 && form.elements.address2.value === autoFilledAddress2) { showError('address2',copy.address2Incomplete); errors.push(form.elements.address2); }
     if (form.elements.email.value && !isValidEmail(form.elements.email.value)) { showError('email',copy.email); errors.push(form.elements.email); }
     if (form.elements.email_confirm.value && form.elements.email.value !== form.elements.email_confirm.value) { showError('email_confirm',copy.mismatch); errors.push(form.elements.email_confirm); }
     if (form.elements.phone.value && !validPhone()) { showError('phone',copy.phone); errors.push(form.elements.phone); }
@@ -102,6 +104,7 @@
       form.elements.prefecture.value = lang === 'ja' ? result.address1 : (prefecturesEn[prefecturesJa.indexOf(result.address1)] || '');
       form.elements.address1.value = result.address2 || '';
       form.elements.address2.value = result.address3 || '';
+      autoFilledAddress2 = form.elements.address2.value;
     } catch (_) { /* Manual entry remains available. */ }
   }
   function fillConfirmation() {
@@ -124,7 +127,7 @@
     return data;
   }
 
-  fields.concat(['address2','address3']).forEach((name) => form.elements[name].addEventListener('input',() => clearError(name)));
+  fields.concat(['address3']).forEach((name) => form.elements[name].addEventListener('input',() => clearError(name)));
   if (form.elements.furigana) {
     form.elements.furigana.addEventListener('input',() => {
       const input = form.elements.furigana;
