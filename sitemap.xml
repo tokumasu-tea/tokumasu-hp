@@ -637,4 +637,18 @@
     <priority>0.8</priority>
   </url>
 
+  <url>
+    <loc>https://tokumasu.co.jp/tokumasu_contact.html</loc>
+    <lastmod>2026-09-11</lastmod><changefreq>yearly</changefreq><priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tokumasu.co.jp/tokumasu_contact.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tokumasu.co.jp/tokumasu_contact_en.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tokumasu.co.jp/tokumasu_contact.html"/>
+  </url>
+  <url>
+    <loc>https://tokumasu.co.jp/tokumasu_contact_en.html</loc>
+    <lastmod>2026-09-11</lastmod><changefreq>yearly</changefreq><priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tokumasu.co.jp/tokumasu_contact.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tokumasu.co.jp/tokumasu_contact_en.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tokumasu.co.jp/tokumasu_contact.html"/>
+  </url>
 </urlset>
