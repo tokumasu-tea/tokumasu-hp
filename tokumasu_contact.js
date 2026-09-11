@@ -6,8 +6,8 @@
 
   const lang = document.documentElement.lang === 'ja' ? 'ja' : 'en';
   const copy = {
-    ja: { required:'この項目は必須です', email:'正しいメールアドレスを入力してください', mismatch:'メールアドレスが一致しません', phone:'正しい電話番号を入力してください', furigana:'全角カタカナで入力してください', address2Required:'ご住所2（町名・番地）を入力してください', address2Digit:'番地まで入力してください（例：杉田3-5-11）', inquiryMax:'お問い合わせ内容は800文字以内で入力してください', sending:'送信中…', submit:'送信する', failure:'送信できませんでした。しばらくしてからもう一度お試しいただくか、tokumasullc@gmail.com まで直接メールをお送りください。' },
-    en: { required:'This field is required.', email:'Please enter a valid email address.', mismatch:'Email addresses do not match.', phone:'Please enter a valid phone number.', furigana:'Please enter full-width katakana.', address2Required:'This field is required.', address2Digit:'Please include the street or block number (e.g. Sugita 3-5-11).', inquiryMax:'Please keep your inquiry within 800 characters.', sending:'Sending…', submit:'Send', failure:'Your message could not be sent. Please try again in a moment, or email us directly at tokumasullc@gmail.com.' }
+    ja: { required:'この項目は必須です', email:'正しいメールアドレスを入力してください', mismatch:'メールアドレスが一致しません', phone:'正しい電話番号を入力してください', furigana:'全角カタカナで入力してください', address2Required:'ご住所2（町名・番地）を入力してください', address2Digit:'番地まで入力してください（例：杉田3-5-11）', inquiryMax:'お問い合わせ内容は800文字以内で入力してください', attachType:'画像ファイル（JPEG・PNG・HEIC）のみ添付できます', attachMaxCount:'添付できる画像は3枚までです', attachMaxSize:'1枚あたり5MBまでの画像を添付してください', attachUnreadable:'この画像は読み込めませんでした。JPEGまたはPNGでお試しください', attachTotalSize:'画像の合計サイズが大きすぎます。枚数を減らしてお試しください', attachProcessing:'画像を処理しています…', attachRemove:'削除', attachConfirmLabel:'添付画像', sending:'送信中…', submit:'送信する', failure:'送信できませんでした。しばらくしてからもう一度お試しいただくか、tokumasullc@gmail.com まで直接メールをお送りください。' },
+    en: { required:'This field is required.', email:'Please enter a valid email address.', mismatch:'Email addresses do not match.', phone:'Please enter a valid phone number.', furigana:'Please enter full-width katakana.', address2Required:'This field is required.', address2Digit:'Please include the street or block number (e.g. Sugita 3-5-11).', inquiryMax:'Please keep your inquiry within 800 characters.', attachType:'Only image files (JPEG, PNG, HEIC) can be attached.', attachMaxCount:'You can attach up to 3 images.', attachMaxSize:'Each image must be 5 MB or smaller.', attachUnreadable:'This image could not be read. Please try JPEG or PNG.', attachTotalSize:'The total size of the images is too large. Please attach fewer images.', attachProcessing:'Processing images…', attachRemove:'Remove', attachConfirmLabel:'Attached images', sending:'Sending…', submit:'Send', failure:'Your message could not be sent. Please try again in a moment, or email us directly at tokumasullc@gmail.com.' }
   }[lang];
   const prefecturesJa = ['北海道','青森県','岩手県','宮城県','秋田県','山形県','福島県','茨城県','栃木県','群馬県','埼玉県','千葉県','東京都','神奈川県','新潟県','富山県','石川県','福井県','山梨県','長野県','岐阜県','静岡県','愛知県','三重県','滋賀県','京都府','大阪府','兵庫県','奈良県','和歌山県','鳥取県','島根県','岡山県','広島県','山口県','徳島県','香川県','愛媛県','高知県','福岡県','佐賀県','長崎県','熊本県','大分県','宮崎県','鹿児島県','沖縄県'];
   const prefecturesEn = ['Hokkaido','Aomori','Iwate','Miyagi','Akita','Yamagata','Fukushima','Ibaraki','Tochigi','Gunma','Saitama','Chiba','Tokyo','Kanagawa','Niigata','Toyama','Ishikawa','Fukui','Yamanashi','Nagano','Gifu','Shizuoka','Aichi','Mie','Shiga','Kyoto','Osaka','Hyogo','Nara','Wakayama','Tottori','Shimane','Okayama','Hiroshima','Yamaguchi','Tokushima','Kagawa','Ehime','Kochi','Fukuoka','Saga','Nagasaki','Kumamoto','Oita','Miyazaki','Kagoshima','Okinawa'];
@@ -23,6 +23,17 @@
   const RESEND_COOLDOWN_MS = 3 * 60 * 1000;
   let resendTimer = null;
   function countChars(value) { return Array.from(value).length; }
+  const ATTACH_MAX_COUNT = 3;
+  const ATTACH_MAX_FILE_BYTES = 5 * 1024 * 1024;
+  const ATTACH_MAX_TOTAL_BYTES = 8 * 1024 * 1024;
+  const ATTACH_MAX_DIMENSION = 1600;
+  const ATTACH_JPEG_QUALITY = 0.8;
+  const ATTACH_EXT_RE = /\.(jpe?g|png|heic|heif)$/i;
+  const ATTACH_MIME_RE = /^image\/(jpeg|png|heic|heif)$/;
+  let attachmentItems = [];
+  let nextAttachId = 0;
+  let attachProcessingCount = 0;
+  let isSubmitting = false;
 
   if (lang === 'ja') {
     [...form.elements.prefecture.options].find((option) => option.text === 'Outside Japan')?.remove();
@@ -124,6 +135,22 @@
       const tr = document.createElement('tr'); const th = document.createElement('th'); const td = document.createElement('td');
       th.textContent = label; td.textContent = form.elements[name].value || '—'; tr.append(th,td); tbody.append(tr);
     });
+    const attachTr = document.createElement('tr');
+    const attachTh = document.createElement('th'); attachTh.textContent = copy.attachConfirmLabel;
+    const attachTd = document.createElement('td');
+    const readyItems = attachmentItems.filter((item) => item.status === 'ready');
+    if (!readyItems.length) { attachTd.textContent = '—'; }
+    else {
+      const wrap = document.createElement('div'); wrap.className = 'attach-confirm-list';
+      readyItems.forEach((item) => {
+        const cell = document.createElement('div'); cell.className = 'attach-confirm-item';
+        const img = document.createElement('img'); img.className = 'attach-thumb'; img.src = item.previewUrl; img.alt = '';
+        const name = document.createElement('p'); name.className = 'attach-confirm-name'; name.textContent = item.name;
+        cell.append(img,name); wrap.append(cell);
+      });
+      attachTd.append(wrap);
+    }
+    attachTr.append(attachTh,attachTd); tbody.append(attachTr);
   }
   function updateInquiryCounter() {
     const counter = $('#inquiry-counter');
@@ -143,6 +170,104 @@
       inquiry.setSelectionRange(newPos,newPos);
     }
     updateInquiryCounter();
+  }
+  function formatApproxSize(bytes) {
+    if (bytes < 1024) return `${bytes}B`;
+    const kb = bytes / 1024;
+    if (kb < 1024) return `${Math.round(kb)}KB`;
+    return `${(kb / 1024).toFixed(1)}MB`;
+  }
+  function resizeImage(file) {
+    return new Promise((resolve,reject) => {
+      const img = new Image();
+      const objectUrl = URL.createObjectURL(file);
+      img.onload = () => {
+        URL.revokeObjectURL(objectUrl);
+        let width = img.naturalWidth; let height = img.naturalHeight;
+        if (!width || !height) { reject(new Error('invalid-dimensions')); return; }
+        if (width > ATTACH_MAX_DIMENSION || height > ATTACH_MAX_DIMENSION) {
+          if (width >= height) { height = Math.round(height * ATTACH_MAX_DIMENSION / width); width = ATTACH_MAX_DIMENSION; }
+          else { width = Math.round(width * ATTACH_MAX_DIMENSION / height); height = ATTACH_MAX_DIMENSION; }
+        }
+        const canvas = document.createElement('canvas');
+        canvas.width = width; canvas.height = height;
+        const ctx = canvas.getContext('2d');
+        if (!ctx) { reject(new Error('no-context')); return; }
+        ctx.drawImage(img,0,0,width,height);
+        canvas.toBlob((blob) => {
+          if (!blob) { reject(new Error('encode-failed')); return; }
+          const reader = new FileReader();
+          reader.onload = () => resolve({ dataUrl:reader.result, size:blob.size });
+          reader.onerror = () => reject(new Error('read-failed'));
+          reader.readAsDataURL(blob);
+        },'image/jpeg',ATTACH_JPEG_QUALITY);
+      };
+      img.onerror = () => { URL.revokeObjectURL(objectUrl); reject(new Error('load-failed')); };
+      img.src = objectUrl;
+    });
+  }
+  function refreshSubmitAvailability() {
+    const button = $('#submit-button');
+    if (!button || isSubmitting) return;
+    if (attachProcessingCount > 0) { button.disabled = true; button.textContent = copy.attachProcessing; }
+    else { button.disabled = false; button.textContent = copy.submit; }
+  }
+  function renderAttachments() {
+    const list = $('#attach-list');
+    if (!list) return;
+    list.replaceChildren();
+    attachmentItems.forEach((item) => {
+      const cell = document.createElement('div');
+      cell.className = 'attach-item' + (item.status === 'processing' ? ' is-processing' : '');
+      const img = document.createElement('img');
+      img.className = 'attach-thumb'; img.src = item.previewUrl; img.alt = '';
+      const remove = document.createElement('button');
+      remove.type = 'button'; remove.className = 'attach-remove'; remove.textContent = '×'; remove.setAttribute('aria-label',copy.attachRemove);
+      remove.addEventListener('click',() => removeAttachment(item.id));
+      const meta = document.createElement('p');
+      meta.className = 'attach-meta';
+      meta.textContent = item.status === 'processing' ? item.name : `${item.name} (${formatApproxSize(item.resizedSize || 0)})`;
+      cell.append(img,remove,meta);
+      list.append(cell);
+    });
+  }
+  function removeAttachment(id) {
+    const item = attachmentItems.find((entry) => entry.id === id);
+    if (item && item.previewUrl) URL.revokeObjectURL(item.previewUrl);
+    attachmentItems = attachmentItems.filter((entry) => entry.id !== id);
+    clearError('attachments');
+    renderAttachments();
+  }
+  function processAttachment(item) {
+    attachProcessingCount++; refreshSubmitAvailability();
+    resizeImage(item.file).then(({ dataUrl,size }) => {
+      item.base64 = dataUrl.split(',')[1] || '';
+      item.resizedSize = size;
+      item.status = 'ready';
+    }).catch(() => {
+      if (item.previewUrl) URL.revokeObjectURL(item.previewUrl);
+      attachmentItems = attachmentItems.filter((entry) => entry.id !== item.id);
+      showError('attachments',copy.attachUnreadable);
+    }).finally(() => {
+      attachProcessingCount--; refreshSubmitAvailability(); renderAttachments();
+    });
+  }
+  function addAttachment(file) {
+    const item = { id:nextAttachId++, file, name:file.name, previewUrl:URL.createObjectURL(file), status:'processing', base64:null, resizedSize:null };
+    attachmentItems.push(item);
+    renderAttachments();
+    processAttachment(item);
+  }
+  function attachmentsPayload() {
+    return attachmentItems.filter((item) => item.status === 'ready').map((item) => ({ name:item.name, mimeType:'image/jpeg', data:item.base64 }));
+  }
+  function attachTotalBytes() {
+    return attachmentItems.filter((item) => item.status === 'ready').reduce((sum,item) => sum + (item.resizedSize || 0),0);
+  }
+  function resetAttachments() {
+    attachmentItems.forEach((item) => { if (item.previewUrl) URL.revokeObjectURL(item.previewUrl); });
+    attachmentItems = [];
+    renderAttachments();
   }
   function getLastSent() {
     try { return Number(localStorage.getItem(RESEND_KEY)) || 0; } catch (_) { return 0; }
@@ -175,13 +300,36 @@
       address3: form.elements.address3.value,
       lang: lang === 'ja' ? 'JA' : 'EN',
       token: 'tokumasu-hp-2026',
-      honey: form.elements.honey.value
+      honey: form.elements.honey.value,
+      attachments: attachmentsPayload()
     });
   }
 
   fields.concat(['address3']).forEach((name) => form.elements[name].addEventListener('input',() => clearError(name)));
   form.elements.inquiry.addEventListener('input',enforceInquiryMax);
   form.elements.inquiry.addEventListener('compositionend',enforceInquiryMax);
+  $('#attach-trigger').addEventListener('click',() => $('#attach-input').click());
+  $('#attach-input').addEventListener('change',(event) => {
+    const files = Array.from(event.target.files || []);
+    event.target.value = '';
+    if (!files.length) return;
+    clearError('attachments');
+    const remainingSlots = ATTACH_MAX_COUNT - attachmentItems.length;
+    const overCount = files.length > remainingSlots;
+    let hadTypeError = false; let hadSizeError = false;
+    const accepted = [];
+    files.forEach((file) => {
+      if (accepted.length >= remainingSlots) return;
+      const typeOk = ATTACH_EXT_RE.test(file.name) && ATTACH_MIME_RE.test(file.type);
+      if (!typeOk) { hadTypeError = true; return; }
+      if (file.size > ATTACH_MAX_FILE_BYTES) { hadSizeError = true; return; }
+      accepted.push(file);
+    });
+    accepted.forEach(addAttachment);
+    if (overCount) showError('attachments',copy.attachMaxCount);
+    else if (hadTypeError) showError('attachments',copy.attachType);
+    else if (hadSizeError) showError('attachments',copy.attachMaxSize);
+  });
   if (form.elements.furigana) {
     form.elements.furigana.addEventListener('input',() => {
       const input = form.elements.furigana;
@@ -205,15 +353,17 @@
   form.addEventListener('submit',async (event) => {
     event.preventDefault();
     if (views.confirm.hidden) return;
-    const button = $('#submit-button'); const error = $('#submit-error'); error.hidden = true; button.disabled = true; button.textContent = copy.sending;
+    if (attachProcessingCount > 0) return;
+    if (attachTotalBytes() > ATTACH_MAX_TOTAL_BYTES) { showError('attachments',copy.attachTotalSize); setStep(1); return; }
+    const button = $('#submit-button'); const error = $('#submit-error'); error.hidden = true; isSubmitting = true; button.disabled = true; button.textContent = copy.sending;
     try {
       const response = await fetch(form.action,{method:'POST',body:payload()});
       const result = await response.json();
       if (!result.ok) throw new Error('Submission failed');
       setLastSent(); scheduleResendUnlock();
-      form.reset(); updateAddressMode(); updateInquiryCounter(); setStep(3);
+      form.reset(); updateAddressMode(); updateInquiryCounter(); resetAttachments(); setStep(3);
     } catch (_) { error.textContent = copy.failure; error.hidden = false; }
-    finally { button.disabled = false; button.textContent = copy.submit; }
+    finally { isSubmitting = false; button.disabled = false; button.textContent = copy.submit; }
   });
   updateAddressMode();
   updateInquiryCounter();

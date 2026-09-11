@@ -19,6 +19,13 @@
 <div class="field"><label class="field-label" for="name">お名前<span class="required">[必須]</span></label><input id="name" name="name" autocomplete="name"><p class="error" data-error-for="name"></p></div>
 <div class="field"><label class="field-label" for="furigana">フリガナ<span class="required">[必須]</span></label><input id="furigana" name="furigana"><p class="note">全角カタカナでご記入ください（例：トクマス タロウ）</p><p class="error" data-error-for="furigana"></p></div>
 <div class="field"><label class="field-label" for="inquiry">お問い合わせ内容<span class="required">[必須]</span></label><textarea id="inquiry" name="inquiry" maxlength="800"></textarea><p id="inquiry-counter" class="char-counter">0 / 800</p><p class="note">800文字以内でご記入ください。収まらない場合は要点のみお書きください。</p><p class="error" data-error-for="inquiry"></p></div>
+<div class="field">
+<input type="file" id="attach-input" name="attachments" accept="image/jpeg,image/png,image/heic,image/heif" multiple hidden>
+<button type="button" id="attach-trigger" class="attach-trigger"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.44 11.05l-9.19 9.19a5.5 5.5 0 01-7.78-7.78l9.19-9.19a3.5 3.5 0 014.95 4.95l-9.2 9.19a1.5 1.5 0 01-2.12-2.12l8.49-8.48"/></svg><span>画像を添付する（任意）</span></button>
+<p class="note">商品の状態などの写真を添付いただけます。JPEG・PNG・HEIC形式、3枚まで。送信時に自動で縮小されます。</p>
+<div id="attach-list" class="attach-list"></div>
+<p class="error" data-error-for="attachments"></p>
+</div>
 <div class="field"><label class="field-label" for="email">メールアドレス<span class="required">[必須]</span></label><input id="email" name="email" type="email" inputmode="email" autocomplete="email"><p class="note">メールアドレスをお間違えの場合はお返事が届きません。ご了承ください。また弊店からの返信が迷惑メールとして処理される場合がございます。迷惑メールフォルダもご確認よろしくお願いいたします。</p><p class="error" data-error-for="email"></p></div>
 <div class="field"><label class="field-label" for="email_confirm">メールアドレス（確認用）<span class="required">[必須]</span></label><input id="email_confirm" name="email_confirm" type="email" inputmode="email" autocomplete="off"><p class="error" data-error-for="email_confirm"></p></div>
 <div class="field"><label class="field-label" for="phone">電話番号<span class="required">[必須]</span></label><input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel"><p class="note">000-0000-0000／000-000-0000／00-000-0000／9＊＊ その他、架空の電話番号はご利用いただくことができません。</p><p class="error" data-error-for="phone"></p></div>
@@ -72,5 +79,5 @@
 <div class="actions"><button id="to-confirm" class="button" type="button">確認画面へ</button></div></section>
 <section id="step-confirm" class="view" hidden><table class="confirmation"><tbody id="confirmation-body"></tbody></table><p class="privacy-inline">送信された個人情報は、お問い合わせへのご回答のみに使用いたします。</p><div class="actions"><button id="back-to-input" class="button secondary" type="button">戻る（修正する）</button><button id="submit-button" class="button" type="submit">送信する</button></div><p id="submit-error" class="submit-error" role="alert" hidden></p></section>
 <section id="step-done" class="view" hidden><div class="status-box"><h2>送信完了</h2><p>お問い合わせを受け付けました。通常3営業日以内にご返信いたします。</p><div class="actions"><a class="button" href="tokumasu_homepage.html">トップページへ戻る</a></div></div></section>
-</form></main><footer><div class="footer-inner"><span class="footer-brand">Tokumasu</span><span class="footer-copy">© 2025 合同会社徳増 / 徳増茶道具専門店. All rights reserved.</span></div></footer><script src="tokumasu_contact.js" defer></script>
+</form></main><footer><div class="footer-inner"><span class="footer-brand">Tokumasu</span><span class="footer-copy">© 2025 合同会社徳増 / 徳増茶道具専門店. All rights reserved.</span></div></footer><script src="tokumasu_contact.js?v=20260911" defer></script>
 </body></html>
