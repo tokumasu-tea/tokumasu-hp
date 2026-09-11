@@ -1,0 +1,237 @@
+/**
+ * 徳増HP_お問い合わせ自動化 / Code.gs 控え
+ *
+ * 更新日: 2026-09-11（バージョン8デプロイ時点）
+ * このファイルは Google Apps Script プロジェクト「徳増HP_お問い合わせ自動化」の
+ * Code.gs を丸ごとコピーしたものです。GAS側を変更したら、必ずこのファイルも
+ * 同じ内容に更新してください（→ contact_form_gas_guide.md の「更新時の注意」参照）。
+ *
+ * 秘密情報の扱い：FORM_TOKEN の値はそのまま書き写していますが、これはフォームの
+ * HTML/JS側（リポジトリ内で誰でも見られる）にも同じ値が平文で書かれている簡易的な
+ * いたずら防止用の文字列であり、パスワードや秘密鍵ではありません。
+ */
+
+/**
+ * 徳増HP お問い合わせフォーム自動通知スクリプト
+ * 機能：フォーム送信時に、お客様のメアドで返信できる通知メールを生成
+ * 通知先：tokumasullc@gmail.com
+ */
+
+function onFormSubmit(e) {
+  try {
+    // フォームの回答を取得
+    const responses = e.namedValues;
+
+    // お客様のメアドを取得
+    const customerEmail = responses['Email Address'] ? responses['Email Address'][0] : '';
+
+    // メアドが取得できなければ処理中止
+    if (!customerEmail) {
+      Logger.log('お客様メアドが取得できませんでした');
+      return;
+    }
+
+    // 各項目を取得
+    const customerName = responses['お名前'] ? responses['お名前'][0] : '（未入力）';
+    const customerPhone = responses['お電話番号'] ? responses['お電話番号'][0] : '（未入力）';
+    const customerZip = responses['郵便番号'] ? responses['郵便番号'][0] : '（未入力）';
+    const customerAddress = responses['ご住所'] ? responses['ご住所'][0] : '（未入力）';
+    const inquiry = responses['お問い合わせ内容'] ? responses['お問い合わせ内容'][0] : '（未入力）';
+    const timestamp = responses['Timestamp'] ? responses['Timestamp'][0] : new Date().toLocaleString('ja-JP');
+
+    // メールの件名
+    const subject = '【徳増HP】お問い合わせ：' + customerName + '様より';
+
+    // メール本文
+    const body = '徳増HPのお問い合わせフォームから、新しいお問い合わせを受信しました。\n\n' +
+      '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n' +
+      '【受信日時】' + timestamp + '\n' +
+      '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n' +
+      '■ お名前\n' + customerName + ' 様\n\n' +
+      '■ メールアドレス\n' + customerEmail + '\n\n' +
+      '■ お電話番号\n' + customerPhone + '\n\n' +
+      '■ 郵便番号\n' + customerZip + '\n\n' +
+      '■ ご住所\n' + customerAddress + '\n\n' +
+      '■ お問い合わせ内容\n' + inquiry + '\n\n' +
+      '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n' +
+      'このメールに「返信」すると、お客様（' + customerEmail + '）に\n' +
+      '直接返信されます。\n' +
+      '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━';
+
+    // メール送信（返信先をお客様メアドに設定）
+    GmailApp.sendEmail(
+      'tokumasullc@gmail.com',
+      subject,
+      body,
+      {
+        replyTo: customerEmail,
+        name: '徳増HP お問い合わせシステム'
+      }
+    );
+
+    Logger.log('通知メール送信完了：' + customerEmail);
+
+  } catch (error) {
+    Logger.log('エラー発生：' + error.toString());
+  }
+}// ==== 認証用の一時関数（認証が通ったら削除する） ====
+function authorize_temp() {
+  // メール送信権限を要求するためのダミー処理
+  GmailApp.getInboxUnreadCount();
+
+  // スプレッドシート読み取り権限を要求するためのダミー処理
+  SpreadsheetApp.getActiveSpreadsheet();
+
+  Logger.log('認証完了');
+}
+
+// ===== 設定（必要ならここだけ変更） =====
+const NOTIFY_TO = 'tokumasullc+hp@gmail.com'; // 通知の宛先。+hp は Gmail の振り分け用（実体は tokumasullc@gmail.com）
+const SHOP_NAME_JA = '徳増茶道具専門店';
+const SHOP_NAME_EN = 'Tokumasu Tea Ceremony Utensils';
+const SITE_URL = 'https://tokumasu.co.jp';
+const SEND_AUTO_REPLY = true;        // お客様への自動返信（受付メール）。止めたいときは false
+const FORM_TOKEN = 'tokumasu-hp-2026'; // フォーム側と同じ文字列。簡易的ないたずら防止
+// ========================================
+
+function doGet() {
+  return ContentService.createTextOutput('OK');
+}
+
+function doPost(e) {
+  try {
+    const raw = (e && e.postData && e.postData.contents) || '{}';
+    const d = JSON.parse(raw);
+
+    if (d.token !== FORM_TOKEN) return json_({ ok: false, error: 'bad token' });
+    if (s_(d.honey)) return json_({ ok: true }); // ボット用の罠に入力があれば黙って捨てる
+    // ---- 内容が完全に同じ重複送信のみ弾く（3分以内・二重クリック対策） ----
+    const guardKey = 'dup_' + Utilities.base64EncodeWebSafe(Utilities.computeDigest(Utilities.DigestAlgorithm.MD5, raw));
+    const cache = CacheService.getScriptCache();
+    if (cache.get(guardKey)) return json_({ ok: true });
+    cache.put(guardKey, '1', 180);
+
+    const required = ['name', 'inquiry', 'email', 'phone', 'country', 'address1', 'address2'];
+    for (const k of required) {
+      if (!s_(d[k])) return json_({ ok: false, error: 'missing ' + k });
+    }
+    const email = s_(d.email);
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return json_({ ok: false, error: 'bad email' });
+
+    const isEn = d.lang === 'EN';
+    const name = s_(d.name).slice(0, 100);
+    const inquiry = s_(d.inquiry).slice(0, 5000);
+    const now = Utilities.formatDate(new Date(), 'Asia/Tokyo', 'yyyy-MM-dd HH:mm');
+
+    // ---- 店舗向け通知（常に日本語） ----
+    const rows = [
+      ['お名前', name],
+      ['フリガナ', s_(d.furigana)],
+      ['メールアドレス', email],
+      ['電話番号', s_(d.phone)],
+      ['国', s_(d.country)],
+      ['郵便番号', s_(d.postal_code)],
+      ['都道府県', s_(d.prefecture)],
+      ['ご住所1（市区町村郡）', s_(d.address1)],
+      ['ご住所2（町名・番地）', s_(d.address2)],
+      ['ご住所3（建物名・部屋番号）', s_(d.address3)],
+      ['送信元ページ', isEn ? '英語ページ' : '日本語ページ'],
+      ['送信日時', now + '（日本時間）'],
+    ].filter(r => !(r[0] === 'フリガナ' && !r[1])); // 英語ページはフリガナ無し
+
+    const notifyBody =
+      (isEn ? '英語' : '日本語') + 'ページのお問い合わせフォームから送信がありました。\n\n' +
+      rows.map(r => '■ ' + r[0] + '：' + r[1]).join('\n') +
+      '\n\n■ お問い合わせ内容：\n' + inquiry +
+      '\n----\nこのメールに「返信」すると、お客様のメールアドレス宛てに送れます。';
+    // ---- 添付画像を受け取る ----
+    const atts = [];
+    if (Array.isArray(d.attachments)) {
+      d.attachments.slice(0, 3).forEach(function (a, i) {
+        try {
+          if (!a || !a.data) return;
+          const bytes = Utilities.base64Decode(a.data);
+          if (bytes.length > 6 * 1024 * 1024) return;
+          const fname = s_(a.name) || ('image' + (i + 1) + '.jpg');
+          atts.push(Utilities.newBlob(bytes, s_(a.mimeType) || 'image/jpeg', fname));
+        } catch (e) {}
+      });
+    }
+    MailApp.sendEmail({
+      to: NOTIFY_TO,
+      subject: '【徳増HP】お問い合わせ：' + name + (isEn ? '' : '様'),
+      body: notifyBody,
+      replyTo: email,
+      name: '徳増HP お問い合わせフォーム',
+      attachments: atts,
+    });
+
+    // ---- お客様宛ての返信下書きを自動作成 ----
+    const quote = (isEn ? '--- Your inquiry ---\n' : '--- お問い合わせ内容 ---\n') +
+      inquiry + '\n' +
+      (isEn ? '--- (received ' : '--- (') + now + (isEn ? ') ---' : ' 受付) ---');
+
+    GmailApp.createDraft(
+      email,
+      isEn
+        ? 'Re: [' + SHOP_NAME_EN + '] Your inquiry'
+        : 'Re: 【' + SHOP_NAME_JA + '】お問い合わせの件',
+      isEn
+        ? 'Dear ' + name + ',\n\nThank you for your inquiry. We are pleased to reply as follows.\n\n\n\n' +
+          quote + '\n\n' + SHOP_NAME_EN + ' (Tokumasu LLC)\n' + SITE_URL
+        : name + ' 様\n\nお待たせいたしました。\nこのたびはお問い合わせいただき、誠にありがとうございます。\nお問い合わせの件につきまして、下記のとおりご回答申し上げます。\n\n\n\n' +
+          quote + '\n\n' + SHOP_NAME_JA + '（合同会社徳増）\n' + SITE_URL,
+      { name: isEn ? SHOP_NAME_EN : SHOP_NAME_JA }
+    );
+
+    const attachCount = atts.length;
+
+    // ---- お客様への自動返信 ----
+    if (SEND_AUTO_REPLY) {
+      if (isEn) {
+        MailApp.sendEmail({
+          to: email,
+          subject: '[' + SHOP_NAME_EN + '] We have received your inquiry',
+          body:
+            'Dear ' + name + ',\n\n' +
+            'Thank you for contacting ' + SHOP_NAME_EN + '.\n' +
+            'We have received your inquiry below.\n\n' +
+            'We are currently receiving a high volume of inquiries, and it may take some time before we can reply. Thank you for your patience.\n\n' +
+            '----------------------------------------\n' + inquiry + '\n----------------------------------------\n\n' +
+            (attachCount > 0 ? (attachCount === 1 ? 'We have received 1 attachment.' : 'We have received ' + attachCount + ' attachments.') + '\n\n' : '') +
+            'This is an automated message. If you did not submit this inquiry, please disregard this email.\n' +
+            SHOP_NAME_EN + ' (Tokumasu LLC)\n' + SITE_URL,
+          replyTo: 'tokumasullc@gmail.com',
+          name: SHOP_NAME_EN,
+        });
+      } else {
+        MailApp.sendEmail({
+          to: email,
+          subject: '【' + SHOP_NAME_JA + '】お問い合わせを受け付けました',
+          body:
+            name + ' 様\n\n' +
+            'このたびは' + SHOP_NAME_JA + 'にお問い合わせいただき、誠にありがとうございます。\n' +
+            '下記の内容でお問い合わせを承りました。\n\n' +
+            '現在、多くのお問い合わせをいただいており、ご回答までにお時間を頂戴しております。\nご不便をおかけいたしますが、いましばらくお待ちくださいますようお願い申し上げます。\n\n' +
+            '----------------------------------------\n' + inquiry + '\n----------------------------------------\n\n' +
+            (attachCount > 0 ? '添付ファイル' + attachCount + '件を受け付けました。\n\n' : '') +
+            '※このメールは自動送信です。お心当たりがない場合は、お手数ですが本メールを破棄してください。\n\n' +
+            SHOP_NAME_JA + '（合同会社徳増）\n' + SITE_URL,
+          replyTo: 'tokumasullc@gmail.com',
+          name: SHOP_NAME_JA,
+        });
+      }
+    }
+
+    return json_({ ok: true });
+  } catch (err) {
+    return json_({ ok: false, error: String(err) });
+  }
+}
+
+function json_(obj) {
+  return ContentService.createTextOutput(JSON.stringify(obj)).setMimeType(ContentService.MimeType.JSON);
+}
+function s_(v) {
+  return (v === null || v === undefined) ? '' : String(v).trim();
+}
