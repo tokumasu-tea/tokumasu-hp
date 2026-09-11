@@ -181,6 +181,7 @@
 
   fields.concat(['address3']).forEach((name) => form.elements[name].addEventListener('input',() => clearError(name)));
   form.elements.inquiry.addEventListener('input',enforceInquiryMax);
+  form.elements.inquiry.addEventListener('compositionend',enforceInquiryMax);
   if (form.elements.furigana) {
     form.elements.furigana.addEventListener('input',() => {
       const input = form.elements.furigana;
@@ -217,4 +218,5 @@
   updateAddressMode();
   updateInquiryCounter();
   scheduleResendUnlock();
+  window.addEventListener('pageshow',() => { updateInquiryCounter(); scheduleResendUnlock(); });
 })();
