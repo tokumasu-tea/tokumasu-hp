@@ -38,6 +38,11 @@
     if (error) error.classList.remove('is-visible');
   }
   function isValidEmail(value) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value); }
+  function formatJst(date) {
+    const parts = new Intl.DateTimeFormat('en-US',{ timeZone:'Asia/Tokyo', hourCycle:'h23', year:'numeric', month:'2-digit', day:'2-digit', hour:'2-digit', minute:'2-digit' }).formatToParts(date);
+    const get = (type) => parts.find((part) => part.type === type).value;
+    return `${get('year')}-${get('month')}-${get('day')} ${get('hour')}:${get('minute')}`;
+  }
   function toKatakana(value) { return value.replace(/[ぁ-ゖ]/g,(ch) => String.fromCharCode(ch.charCodeAt(0) + 0x60)); }
   function validPhone() {
     const value = form.elements.phone.value.trim();
@@ -121,7 +126,37 @@
   }
   function payload() {
     const data = new FormData();
-    ['name','furigana','inquiry','email','phone','country','postal_code','prefecture','address1','address2','address3','lang','_template','_honey'].filter((name) => form.elements[name]).forEach((name) => data.append(name,form.elements[name].value));
+    const submittedAt = formatJst(new Date());
+    if (lang === 'ja') {
+      data.append('お名前',form.elements.name.value);
+      if (form.elements.furigana) data.append('フリガナ',form.elements.furigana.value);
+      data.append('お問い合わせ内容',form.elements.inquiry.value);
+      data.append('メールアドレス',form.elements.email.value);
+      data.append('電話番号',form.elements.phone.value);
+      data.append('国',form.elements.country.value);
+      data.append('郵便番号',form.elements.postal_code.value);
+      data.append('都道府県',form.elements.prefecture.value);
+      data.append('ご住所1（市区町村郡）',form.elements.address1.value);
+      data.append('ご住所2（町名・番地）',form.elements.address2.value);
+      data.append('ご住所3（建物名・部屋番号）',form.elements.address3.value);
+      data.append('送信元ページ','日本語ページ');
+      data.append('送信日時（日本時間）',submittedAt);
+    } else {
+      data.append('Name',form.elements.name.value);
+      data.append('Inquiry',form.elements.inquiry.value);
+      data.append('Email',form.elements.email.value);
+      data.append('Phone',form.elements.phone.value);
+      data.append('Country',form.elements.country.value);
+      data.append('Postal code',form.elements.postal_code.value);
+      data.append('Prefecture',form.elements.prefecture.value);
+      data.append('Address line 1',form.elements.address1.value);
+      data.append('Address line 2',form.elements.address2.value);
+      data.append('Address line 3',form.elements.address3.value);
+      data.append('Page','English page');
+      data.append('Submitted at (JST)',submittedAt);
+    }
+    data.append('_template',form.elements._template.value);
+    data.append('_honey',form.elements._honey.value);
     data.append('_replyto',form.elements.email.value);
     data.append('_subject',lang === 'ja' ? `【徳増HP】お問い合わせ：${form.elements.name.value}様` : `[Tokumasu website] Inquiry from ${form.elements.name.value}`);
     return data;
