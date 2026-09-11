@@ -6,8 +6,8 @@
 
   const lang = document.documentElement.lang === 'ja' ? 'ja' : 'en';
   const copy = {
-    ja: { required:'この項目は必須です', email:'正しいメールアドレスを入力してください', mismatch:'メールアドレスが一致しません', phone:'正しい電話番号を入力してください', furigana:'全角カタカナで入力してください', address2Required:'ご住所2（町名・番地）を入力してください', address2Digit:'番地まで入力してください（例：杉田3-5-11）', sending:'送信中…', submit:'送信する', failure:'送信できませんでした。しばらくしてからもう一度お試しいただくか、tokumasullc@gmail.com まで直接メールをお送りください。' },
-    en: { required:'This field is required.', email:'Please enter a valid email address.', mismatch:'Email addresses do not match.', phone:'Please enter a valid phone number.', furigana:'Please enter full-width katakana.', address2Required:'This field is required.', address2Digit:'Please include the street or block number (e.g. Sugita 3-5-11).', sending:'Sending…', submit:'Send', failure:'Your message could not be sent. Please try again in a moment, or email us directly at tokumasullc@gmail.com.' }
+    ja: { required:'この項目は必須です', email:'正しいメールアドレスを入力してください', mismatch:'メールアドレスが一致しません', phone:'正しい電話番号を入力してください', furigana:'全角カタカナで入力してください', address2Required:'ご住所2（町名・番地）を入力してください', address2Digit:'番地まで入力してください（例：杉田3-5-11）', inquiryMax:'お問い合わせ内容は800文字以内で入力してください', sending:'送信中…', submit:'送信する', failure:'送信できませんでした。しばらくしてからもう一度お試しいただくか、tokumasullc@gmail.com まで直接メールをお送りください。' },
+    en: { required:'This field is required.', email:'Please enter a valid email address.', mismatch:'Email addresses do not match.', phone:'Please enter a valid phone number.', furigana:'Please enter full-width katakana.', address2Required:'This field is required.', address2Digit:'Please include the street or block number (e.g. Sugita 3-5-11).', inquiryMax:'Please keep your inquiry within 800 characters.', sending:'Sending…', submit:'Send', failure:'Your message could not be sent. Please try again in a moment, or email us directly at tokumasullc@gmail.com.' }
   }[lang];
   const prefecturesJa = ['北海道','青森県','岩手県','宮城県','秋田県','山形県','福島県','茨城県','栃木県','群馬県','埼玉県','千葉県','東京都','神奈川県','新潟県','富山県','石川県','福井県','山梨県','長野県','岐阜県','静岡県','愛知県','三重県','滋賀県','京都府','大阪府','兵庫県','奈良県','和歌山県','鳥取県','島根県','岡山県','広島県','山口県','徳島県','香川県','愛媛県','高知県','福岡県','佐賀県','長崎県','熊本県','大分県','宮崎県','鹿児島県','沖縄県'];
   const prefecturesEn = ['Hokkaido','Aomori','Iwate','Miyagi','Akita','Yamagata','Fukushima','Ibaraki','Tochigi','Gunma','Saitama','Chiba','Tokyo','Kanagawa','Niigata','Toyama','Ishikawa','Fukui','Yamanashi','Nagano','Gifu','Shizuoka','Aichi','Mie','Shiga','Kyoto','Osaka','Hyogo','Nara','Wakayama','Tottori','Shimane','Okayama','Hiroshima','Yamaguchi','Tokushima','Kagawa','Ehime','Kochi','Fukuoka','Saga','Nagasaki','Kumamoto','Oita','Miyazaki','Kagoshima','Okinawa'];
@@ -18,6 +18,11 @@
   const views = { input:$('#step-input'), confirm:$('#step-confirm'), done:$('#step-done') };
   const stepEls = [...document.querySelectorAll('.step')];
   let lastPostal = '';
+  const INQUIRY_MAX = 800;
+  const RESEND_KEY = 'tokumasu_contact_last_sent';
+  const RESEND_COOLDOWN_MS = 3 * 60 * 1000;
+  let resendTimer = null;
+  function countChars(value) { return Array.from(value).length; }
 
   if (lang === 'ja') {
     [...form.elements.prefecture.options].find((option) => option.text === 'Outside Japan')?.remove();
@@ -54,6 +59,7 @@
       if (empty) { showError(name, name === 'address2' ? copy.address2Required : copy.required); errors.push(input); }
     });
     if (form.elements.furigana && form.elements.furigana.value && !FURIGANA_RE.test(form.elements.furigana.value)) { showError('furigana',copy.furigana); errors.push(form.elements.furigana); }
+    if (countChars(form.elements.inquiry.value) > INQUIRY_MAX) { showError('inquiry',copy.inquiryMax); errors.push(form.elements.inquiry); }
     const address2NeedsDigit = lang === 'ja' || form.elements.country.value === 'Japan';
     if (form.elements.address2.value.trim() && address2NeedsDigit && !ADDRESS2_DIGIT_RE.test(form.elements.address2.value)) { showError('address2',copy.address2Digit); errors.push(form.elements.address2); }
     if (form.elements.email.value && !isValidEmail(form.elements.email.value)) { showError('email',copy.email); errors.push(form.elements.email); }
@@ -119,6 +125,41 @@
       th.textContent = label; td.textContent = form.elements[name].value || '—'; tr.append(th,td); tbody.append(tr);
     });
   }
+  function updateInquiryCounter() {
+    const counter = $('#inquiry-counter');
+    if (!counter) return;
+    const len = countChars(form.elements.inquiry.value);
+    counter.textContent = `${len} / ${INQUIRY_MAX}`;
+    counter.classList.toggle('is-limit', len >= INQUIRY_MAX);
+    counter.classList.toggle('is-warning', len > 700 && len < INQUIRY_MAX);
+  }
+  function enforceInquiryMax() {
+    const inquiry = form.elements.inquiry;
+    const chars = Array.from(inquiry.value);
+    if (chars.length > INQUIRY_MAX) {
+      const pos = inquiry.selectionStart;
+      inquiry.value = chars.slice(0,INQUIRY_MAX).join('');
+      const newPos = Math.min(pos,inquiry.value.length);
+      inquiry.setSelectionRange(newPos,newPos);
+    }
+    updateInquiryCounter();
+  }
+  function getLastSent() {
+    try { return Number(localStorage.getItem(RESEND_KEY)) || 0; } catch (_) { return 0; }
+  }
+  function setLastSent() {
+    try { localStorage.setItem(RESEND_KEY,String(Date.now())); } catch (_) { /* localStorage unavailable */ }
+  }
+  function scheduleResendUnlock() {
+    const notice = $('#resend-notice'); const button = $('#to-confirm');
+    if (!notice || !button) return;
+    const remaining = RESEND_COOLDOWN_MS - (Date.now() - getLastSent());
+    const locked = remaining > 0;
+    button.disabled = locked;
+    notice.hidden = !locked;
+    if (resendTimer) clearTimeout(resendTimer);
+    if (locked) resendTimer = setTimeout(scheduleResendUnlock,remaining);
+  }
   function payload() {
     return JSON.stringify({
       name: form.elements.name.value,
@@ -139,6 +180,7 @@
   }
 
   fields.concat(['address3']).forEach((name) => form.elements[name].addEventListener('input',() => clearError(name)));
+  form.elements.inquiry.addEventListener('input',enforceInquiryMax);
   if (form.elements.furigana) {
     form.elements.furigana.addEventListener('input',() => {
       const input = form.elements.furigana;
@@ -167,9 +209,12 @@
       const response = await fetch(form.action,{method:'POST',body:payload()});
       const result = await response.json();
       if (!result.ok) throw new Error('Submission failed');
-      form.reset(); updateAddressMode(); setStep(3);
+      setLastSent(); scheduleResendUnlock();
+      form.reset(); updateAddressMode(); updateInquiryCounter(); setStep(3);
     } catch (_) { error.textContent = copy.failure; error.hidden = false; }
     finally { button.disabled = false; button.textContent = copy.submit; }
   });
   updateAddressMode();
+  updateInquiryCounter();
+  scheduleResendUnlock();
 })();
