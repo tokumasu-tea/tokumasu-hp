@@ -4,3 +4,5 @@
 # Claude Code ローカル設定
 .claude/
 CLAUDE.md
+AGENTS.local.md
+AGENTS.md.local-backup
