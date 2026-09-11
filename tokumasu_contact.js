@@ -141,10 +141,16 @@
   }
   form.elements.country.addEventListener('change',updateAddressMode);
   form.elements.postal_code.addEventListener('input',lookupPostalCode);
+  form.addEventListener('keydown',(event) => {
+    if (event.key !== 'Enter') return;
+    const tag = event.target.tagName;
+    if (tag === 'INPUT' || tag === 'SELECT') event.preventDefault();
+  });
   $('#to-confirm').addEventListener('click',() => { if (validate()) { fillConfirmation(); setStep(2); } });
   $('#back-to-input').addEventListener('click',() => setStep(1));
   form.addEventListener('submit',async (event) => {
     event.preventDefault();
+    if (views.confirm.hidden) return;
     const button = $('#submit-button'); const error = $('#submit-error'); error.hidden = true; button.disabled = true; button.textContent = copy.sending;
     try {
       const response = await fetch(form.action,{method:'POST',body:payload(),headers:{Accept:'application/json'}});
