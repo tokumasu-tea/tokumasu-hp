@@ -529,6 +529,24 @@
   </url>
 
   <url>
+    <loc>https://tokumasu.co.jp/blog/2026/10/14-ro-biraki.html</loc>
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tokumasu.co.jp/blog/2026/10/14-ro-biraki.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tokumasu.co.jp/blog/en/2026/10/14-ro-biraki.html"/>
+  </url>
+
+  <url>
+    <loc>https://tokumasu.co.jp/blog/en/2026/10/14-ro-biraki.html</loc>
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tokumasu.co.jp/blog/2026/10/14-ro-biraki.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tokumasu.co.jp/blog/en/2026/10/14-ro-biraki.html"/>
+  </url>
+
+  <url>
     <loc>https://tokumasu.co.jp/blog/2026/05/11-furo-biraki.html</loc>
     <lastmod>2026-05-14</lastmod>
     <changefreq>monthly</changefreq>
