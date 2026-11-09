@@ -128,7 +128,24 @@ footer{background:#070707;padding:72px 24px 32px}
     "url": "https://tokumasu.co.jp/product-fukusa-yuko-murasaki.html",
     "priceCurrency": "JPY",
     "price": "20000",
-    "availability": "https://schema.org/InStock"
+    "availability": "https://schema.org/InStock",
+    "hasMerchantReturnPolicy": {
+      "@type": "MerchantReturnPolicy",
+      "applicableCountry": "JP",
+      "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+      "merchantReturnDays": 8,
+      "returnMethod": "https://schema.org/ReturnByMail",
+      "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility"
+    },
+    "shippingDetails": {
+      "@type": "OfferShippingDetails",
+      "shippingRate": { "@type": "MonetaryAmount", "value": 0, "currency": "JPY" },
+      "shippingDestination": { "@type": "DefinedRegion", "addressCountry": "JP" },
+      "deliveryTime": {
+        "@type": "ShippingDeliveryTime",
+        "handlingTime": { "@type": "QuantitativeValue", "minValue": 2, "maxValue": 3, "unitCode": "DAY" }
+      }
+    }
   }
 }
 </script>
