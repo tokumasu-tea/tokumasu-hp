@@ -1,0 +1,9 @@
+[
+  { "id": "matcha", "名前": "抹茶", "英語": "MATCHA" },
+  { "id": "temae", "名前": "点前道具", "英語": "TEMAE TOOLS" },
+  { "id": "yu-hi", "名前": "湯と火", "英語": "KETTLE & FIRE" },
+  { "id": "mizu", "名前": "水まわり", "英語": "WATER" },
+  { "id": "nuno-kami", "名前": "帛紗・懐紙・扇子・帛紗挟・足袋", "英語": "CLOTH & PAPER" },
+  { "id": "kashi-ko-hana", "名前": "菓子と香・花", "英語": "SWEETS, INCENSE & FLOWERS" },
+  { "id": "mizuya", "名前": "水屋", "英語": "MIZUYA" }
+]
